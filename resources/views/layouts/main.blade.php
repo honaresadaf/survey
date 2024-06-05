@@ -6,7 +6,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/images/favicon.png">
     <!-- Page Title  -->
-    <title>@yield('title')</title>
+    <title>@yield('title') | چشم انتظار</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="/assets/css/dashlite.rtl.css">
     <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css">

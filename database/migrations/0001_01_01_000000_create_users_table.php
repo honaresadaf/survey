@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->integer('n_true')->default(0);
             $table->integer('n_false')->default(0);
-            $table->integer('random');
+            $table->string('random')->default(0);
+            $table->string('admin')->default(0);
+            $table->integer('score')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

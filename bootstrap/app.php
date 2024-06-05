@@ -18,8 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('admin/questions')
                 ->group(base_path('routes/questions.php'));
 
-            Route::middleware('web' , 'auth' , 'auth.admin')
-                ->prefix('admin/members')
+            Route::middleware('web' , 'auth' )
                 ->group(base_path('routes/members.php'));
 
             Route::middleware('web' , 'auth' , 'auth.admin')

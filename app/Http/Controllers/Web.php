@@ -14,37 +14,106 @@ use Illuminate\Support\Facades\Hash;
 
 class Web extends Controller
 {
-    public function member_all() {
-        return view('member.all' , [
-            'u_data' => User::orderByDesc('n_true')->get()->except([1]),
-        ]);
+    public function setup()
+    {
+        if (AdminConfigs::count() == 0){
+            return view('setup');
+            $data = [
+                ['name' => 'adminRegister', 'config' => 1],
+                ['name' => 'dor', 'config' => '3',],
+                ['name' => 'current_dor', 'config' => '0',],
+                ['name' => 'start', 'config' => '0',]
+            ];
+            AdminConfigs::insert($data);
+            return redirect('/');
+        }
 
     }
 
-    public function show_questions() {
-        $qustions = Questions::all();
-        $qustions2 = Questions::all()->pluck('id')->shuffle()->implode('.');
-        dd($qustions2);
-        return view('member.showQuestions' , ['questions' => Questions::all()]);
+    public function welcome2()
+    {
+        return view('welcome2');
     }
 
-    public function check_questions(Request $request) {
-        dd($request);
-        return view('member.result' , ['questions' => Questions::all()]);
+    public function welcome3()
+    {
+        if (Auth::check()) {
+            $start = AdminConfigs::where('name', 'start')->first();
+            return view('welcome3', ['start' => $start->config]);
+        } else {
+            return redirect(route('welcome'));
+        }
 
     }
 
-    public function admin_login() {
+    public function member_all()
+    {
+        $u_data = User::orderByDesc('n_true')->get();
+        return view('member.all', compact('u_data'));
+
+    }
+
+    public function show_questions(Request $request)
+    {
+        if ($request->user()->random != null) {
+            $qustions = $request->user()->random;
+            $q = explode('.', $qustions);
+            $new_qustions = explode('.', $qustions);
+            unset($new_qustions[0]);
+            $new_qustions = join('.', $new_qustions);
+            User::find($request->user()->id)->update(['random' => $new_qustions]);
+
+            $q = Questions::find($q[0]);
+            return view('member.showQuestions', ['question' => $q]);
+        } else {
+            return view('member.end', ['user' => $request->user()]);
+        }
+
+    }
+
+    public function check_questions(Request $request)
+    {
+        $true = Questions::find($request->id)->true;
+        if ($request->gozine == $true) {
+            $user = User::find($request->user()->id);
+            $n_true = $user->n_true + 1;
+            $n_false = $user->n_false;
+            $score = ($n_true - ($n_false / 2)) * 10;
+            User::find($request->user()->id)->update([
+                'n_true' => $n_true,
+                'score' => $score,
+            ]);
+            return view('member.result', ['question' => Questions::find($request->id), 'an' => $request->gozine, 'true' => 1, 'score' => $score]);
+
+        } else {
+            $user = User::find($request->user()->id);
+            $n_true = $user->n_true;
+            $n_false = $user->n_false + 1;
+            $score = ($n_true - ($n_false / 2)) * 10;
+            User::find($request->user()->id)->update([
+                'n_false' => $n_false,
+                'score' => $score,
+            ]);
+
+            return view('member.result', ['question' => Questions::find($request->id), 'an' => $request->gozine, 'true' => 0, 'score' => $score]);
+        }
+
+
+    }
+
+    public function admin_login()
+    {
         if (Auth::check()) {
             return redirect()->intended(route('admin.dashboard'));
         } else {
-            $register = AdminConfigs::where('name' , 'adminRegister')->first();
-            return view('admin.login' , ['register' => $register->config]);
+            $register = AdminConfigs::where('name', 'adminRegister')->first();
+            return view('admin.login', ['register' => $register->config]);
         }
     }
 
-    public function admin_register() {
-        if (AdminConfigs::where('name' , 'adminRegister')->first()->config) {
+    public function admin_register()
+    {
+        if (AdminConfigs::where('name', 'adminRegister')->first()->config) {
             return view('admin.register');
         } else {
             return view('admin.registerBlock');
@@ -53,12 +122,13 @@ class Web extends Controller
 
     }
 
-    public function admin_register_pots(request $request) {
+    public function admin_register_pots(request $request)
+    {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'number' => ['required', 'string', 'lowercase', 'max:255', 'unique:'.User::class],
+            'number' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ] , [
+        ], [
             'number.unique' => ' نام کاربری تکراری است.'
         ]);
 
@@ -77,10 +147,11 @@ class Web extends Controller
         return redirect(route('admin.dashboard'));
     }
 
-    public function admin_login_pots(LoginRequest $request){
+    public function admin_login_pots(LoginRequest $request)
+    {
 
         $number = $request->number;
-        User::where('number',$number)->first();
+        User::where('number', $number)->first();
 
         $request->authenticate();
 

@@ -1,10 +1,56 @@
+@extends('layouts.main2')
 @section('title')
     مسابقه غدیر
 @endsection
 
 @section('body')
 
+
+
+
+
+
     <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white w-lg-45">
+
+        <div class="absolute-top-right d-lg-none p-3 p-sm-5">
+            <a href="#" class="toggle btn btn-white btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
+        </div>
+        <div style="max-width: 540px;" class="nk-block nk-block-middle nk-auth-body ml-0">
+            <div class="brand-logo pb-5">
+                <a href="#" class="logo-link">
+                    <img class="logo-light logo-img logo-img-lg" src="/assets/images/logo.png" srcset="/assets/images/logo.png 2x" alt="لوگو">
+                </a>
+            </div>
+            <div class="card text-white bg-info">
+                <div class="card-header ">مسابقه غدیر</div>
+                <div class="card-inner">
+                    <h5 class="card-title ">به مسابقه خوش آمدید.</h5>
+                    <p class="card-text "></p>
+                </div>
+            </div>
+            <div class="card text-white bg-info-dim " style="text-align: center">
+                <div class="card-inner">
+                    <a href="{{ route('welcome3') }}" class="text-info box-bg-info-link">
+
+                        ورود به مسابقه
+                        <em class="icon ni ni-back-ios"></em>
+                    </a>
+                </div>
+            </div>
+            <div class="nk-block-head">
+                <div class="nk-block-head-content">
+                    <h5 class="nk-block-title"></h5>
+                    <div class="nk-block-des">
+                        <p></p>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- .nk-block-head -->
+
+            <!-- form -->
+        </div>
 
 
     </div>

@@ -55,4 +55,41 @@ class Admin extends Controller
        ]);
        return redirect(route('config.user'));
     }
+
+    public function config_show_admins() {
+        $users = User::query();
+        $users = $users->Paginate(20);
+        return view('admin.config.admins', compact('users'));
+    }
+
+    public function all_member() {
+        return view('admin.members.all' , [
+            'u_data' => User::orderByDesc('n_true')->get(),
+        ]);
+    }
+
+    public function member_edit(Request $request)
+    {
+        return view('admin.members.edit', [
+            'member' => User::findOrFail($request->user),
+        ]);
+    }
+
+    public function member_edit_post(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'number' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
+        ], [
+            'number.unique' => ' شماره تماس تکراری است.'
+        ]);
+        User::find($request->id)->update([
+            'name' => $request->name,
+            'number' => $request->number,
+        ]);
+        return redirect(route('member.edit', ['user' => $request->id]));
+
+
+    }
+
 }

@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
 
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard', absolute: false));
+            return redirect()->intended(route('welcome3'));
         } else {
 
             $request->validate([
@@ -55,7 +55,6 @@ class AuthenticatedSessionController extends Controller
             } else {
                 $random = Questions::all()->pluck('id')->shuffle()->implode('.');
             }
-
             $user = User::create([
                 'name' => $request->name,
                 'number' => $request->number,
@@ -67,7 +66,7 @@ class AuthenticatedSessionController extends Controller
 
             Auth::login($user);
 
-            return redirect(route('dashboard', absolute: false));
+            return redirect(route('welcome3'));
         }
 
 

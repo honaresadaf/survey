@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\AdminConfigs;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,9 +16,14 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->isAdmin()) {
-            return $next($request);
+            if (AdminConfigs::all()) {
+            if ($request->user()->isAdmin()) {
+                return $next($request);
+            }
+            return redirect('/l');
+        } else {
+            return redirect(route('setup'));
         }
-        return redirect('/l');
+
     }
 }

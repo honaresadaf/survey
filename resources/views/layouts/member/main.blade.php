@@ -6,7 +6,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/images/favicon.png">
     <!-- Page Title  -->
-    <title>ثبت نام | قالب مدیریتی دش‌لایت</title>
+    <title>@yield('title') | چشم انتظار</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="/assets/css/dashlite.rtl.css">
     <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css">
@@ -31,24 +31,16 @@
                                 <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3234px; transform: translate3d(462px, 0px, 0px);"><div class="slider-item slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 462px;" tabindex="-1">
                                             <div class="nk-feature nk-feature-center">
                                                 <div class="nk-feature-content py-4 p-sm-5">
-                                                    <h4>تمام اتوماتیک</h4>
-                                                    <p>.نمایش و تصحیح سوالات به صورت اتوماتیک</p>
-                                                </div>
-                                                <div class="nk-feature-content py-4 p-sm-5">
-                                                    <h4>رابط کابری مناسب</h4>
-                                                    <p>رابط کاربری مناسب برای موبایل و پاسخ گویی راحت.</p>
+                                                    <h4>مسابقه غدیر</h4>
+                                                    <p>گروه چشم انتظار</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="slider-item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 462px;" tabindex="0" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00">
                                             <div class="nk-feature nk-feature-center">
                                                 <div class="nk-feature-content py-4 p-sm-5">
-                                                    <h4>رابط کابری مناسب</h4>
-                                                    <p>رابط کاربری مناسب برای موبایل و پاسخ گویی راحت.</p>
-                                                </div>
-                                                <div class="nk-feature-content py-4 p-sm-5">
-                                                    <h4>تمام اتوماتیک</h4>
-                                                    <p>.نمایش و تصحیح سوالات به صورت اتوماتیک</p>
+                                                    <h4>مسابقه غدیر</h4>
+                                                    <p>گروه چشم انتظار</p>
                                                 </div>
                                             </div>
                                         </div>

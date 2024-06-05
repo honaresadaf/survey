@@ -93,7 +93,7 @@ $n = User::count()
 
                                         <!-- .nk-tb-item -->
 
-
+                                        @if(!$u->admin)
                                             <div class="nk-tb-item">
                                                 <div class="nk-tb-col col-n">
                                                     <span class="sub-text">{{ $u->id }}</span>
@@ -129,7 +129,7 @@ $n = User::count()
                                                             </a>
                                                         </li>
                                                         <li class="nk-tb-action-hidden">
-                                                            <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="ویرایش" data-bs-original-title="ویرایش">
+                                                            <a href="{{ route('member.edit', ['user' => $u->id]) }}" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="ویرایش" data-bs-original-title="ویرایش">
                                                                 <em class="icon ni ni-edit-alt-fill"></em>
                                                             </a>
                                                         </li>
@@ -137,6 +137,7 @@ $n = User::count()
                                                 </div>
                                             </div>
                                             <!-- .nk-tb-item -->
+                                            @endif
                                         @endforeach
                                     @endif
                                 </div>

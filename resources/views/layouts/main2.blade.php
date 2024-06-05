@@ -9,6 +9,7 @@
     <title>@yield('title')</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="/assets/css/dashlite.rtl.css">
+    <link rel="stylesheet" href="/assets/css/mystyle.css">
     <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css">
 </head>
 <body class="has-rtl nk-body ui-rounder npc-general pg-auth no-touch nk-nio-theme" dir="rtl">

@@ -128,7 +128,7 @@
                                     <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></em></span>
                                     <span class="nk-menu-text">تنظیمات ادمین</span>
                                 </a>
-                                <a href="#" class="nk-menu-link">
+                                <a href="{{ route('config.admins') }}" class="nk-menu-link">
                                     <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></em></span>
                                     <span class="nk-menu-text">لیست کاربران ادمین</span>
                                 </a>

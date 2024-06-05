@@ -4,11 +4,16 @@ use App\Http\Controllers\ProfileController;
 use \App\Http\Controllers\Web;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () { return view('welcome2'); })->name('welcome');
+Route::get('/', [Web::class , 'welcome2'])->name('welcome');
+Route::get('/welcome',[Web::class , 'welcome3'])->name('welcome3');
+Route::get('/setup', [Web::class , 'setup'])->name('setup');
 
-Route::get('/start', function () {
+Route::get('/start', function (Request $request) {
+    if (\Illuminate\Support\Facades\Auth::check()) {
+        return redirect(route('show.questions'));
+    }
     return view('member.login');
-});
+})->name('start');
 
 Route::get('/admin/login', [Web::class , 'admin_login'])->name('admin.login');
 Route::post('/admin/login', [Web::class , 'admin_login_pots'])->name('admin.login');
@@ -22,8 +27,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/members', [Web::class , 'member_all'])->name('member.all');
+
 Route::get('/q', [Web::class , 'show_questions'])->middleware('auth')->name('show.questions');
-Route::post('/q', [Web::class , 'check_questions'])->middleware('auth')->name('check');
+Route::post('/check', [Web::class , 'check_questions'])->middleware('auth')->name('check');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

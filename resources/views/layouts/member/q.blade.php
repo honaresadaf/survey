@@ -31,6 +31,8 @@
 <!-- JavaScript -->
 <script src="/assets/js/bundle.js"></script>
 <script src="/assets/js/scripts.js"></script>
+<script src="./assets/js/libs/tagify.js"></script>
+<script src="./assets/js/jdate.js"></script>
 <!-- select region modal -->
 
 <!-- .modal -->

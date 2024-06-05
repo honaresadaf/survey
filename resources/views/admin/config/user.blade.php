@@ -53,13 +53,19 @@ $n = Questions::count()
                                     <div class="form-group">
                                         <label for="name" class="form-label">نام</label>
                                         <div class="form-control-wrap number-spinner-wrap">
-                                            <input id="name" type="text" class="form-control" placeholder="نام" value="{{ $user->name }}"  name="name">
+                                            <input id="name" type="text" class="form-control @error('name') error @enderror" placeholder="نام" value="{{ $user->name }}"  name="name">
+                                            @error('name')
+                                            <span id="fv-message-error" class="invalid">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="number" class="form-label">نام کاربری</label>
                                         <div class="form-control-wrap number-spinner-wrap">
-                                            <input id="number" type="text" class="form-control " placeholder="نام کاربری" value="{{ $user->number }}" name="number">
+                                            <input id="number" type="text" class="form-control @error('number') error @enderror " placeholder="نام کاربری" value="{{ $user->number }}" name="number">
+                                            @error('number')
+                                            <span id="fv-message-error" class="invalid">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
