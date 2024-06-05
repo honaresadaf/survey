@@ -22,17 +22,16 @@
                 </a>
             </div>
             <div class="card text-white bg-info">
-                <div class="card-header ">مسابقه غدیر</div>
+                <div class="card-header ">{{ \App\Models\AdminConfigs::where('name' , 'mosabeghe_name')->first()->config }}</div>
                 <div class="card-inner">
-                    <h5 class="card-title ">به مسابقه خوش آمدید.</h5>
+                    <h5 class="card-title ">{{ \App\Models\AdminConfigs::where('name' , 'welcome_text')->first()->config }}</h5>
                     <p class="card-text "></p>
                 </div>
             </div>
             <div class="card text-white bg-info-dim " style="text-align: center">
                 <div class="card-inner">
                     <a href="{{ route('welcome3') }}" class="text-info box-bg-info-link">
-
-                        ورود به مسابقه
+                        {{ \App\Models\AdminConfigs::where('name' , 'welcome_btn')->first()->config }}
                         <em class="icon ni ni-back-ios"></em>
                     </a>
                 </div>
@@ -65,7 +64,7 @@
                         </div>
                         <div class="slider-item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 462px;" tabindex="0" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00">
                             <div class="nk-feature nk-feature-center">
-                                گروه چشم انتظار
+                                {{ \App\Models\AdminConfigs::where('name' , 'group_name')->first()->config }}
                             </div>
                         </div>
                     </div>

@@ -16364,11 +16364,11 @@ svg {
 .bg-primary-dim,
 .dual-listbox .dual-listbox__item:active,
 .dual-listbox .dual-listbox__item.dual-listbox__item--selected {
-  background-color: #ede5fc !important;
+  background-color: #e5fcf2 !important;
 }
 
 .text-primary-dim {
-  color: #ede5fc !important;
+  color: #e5fcf2 !important;
 }
 
 .bg-success-dim {
@@ -33670,8 +33670,8 @@ span.fc-event-teal .dot {
 }
 
 a.fc-event-primary-dim {
-  background-color: #ede5fc !important;
-  border-color: #ede5fc !important;
+  background-color: #e5fcf2 !important;
+  border-color: #e5fcf0 !important;
   color: var(--bs-primarym) !important;
 }
 
@@ -33681,9 +33681,9 @@ a.fc-event-primary-dim .fc-list-event-dot {
 }
 
 .modal-header.fc-event-primary-dim {
-  background-color: #ede5fc !important;
+  background-color: #e5fcf1 !important;
   color: var(--bs-primarym) !important;
-  border-color: #ddcef9 !important;
+  border-color: #cef9ea !important;
 }
 
 .modal-header.fc-event-primary-dim .close,
@@ -33692,12 +33692,12 @@ a.fc-event-primary-dim .fc-list-event-dot {
 }
 
 span.fc-event-primary-dim .dot {
-  background-color: #ede5fc !important;
+  background-color: #e5fcf2 !important;
   border-color: var(--bs-primarym) !important;
 }
 
 .fc-event-primary-dim:not(a) .fc-list-event-dot {
-  background-color: #ede5fc !important;
+  background-color: #e5fcf4 !important;
   border-color: #9468ef !important;
 }
 

@@ -10457,7 +10457,9 @@ fieldset:disabled .dual-listbox .dual-listbox__button,
 
 .text-primary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  /*color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;*/
+  color: #23b593 !important;
+  color: var(--bs-primarym); !important;
 }
 
 .text-secondary {
@@ -16459,7 +16461,7 @@ svg {
 .bg-primary-dim,
 .dual-listbox .dual-listbox__item:active,
 .dual-listbox .dual-listbox__item.dual-listbox__item--selected {
-  background-color: #ede5fc !important;
+  background-color: #e5fcf3 !important;
 }
 
 .text-primary-dim {

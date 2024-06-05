@@ -58,25 +58,6 @@ $n = Questions::count()
                                     </div>
                                     <br>
                                 @endfor
-
-                                {{--                                <div class="g">--}}
-                                {{--                                    <div class="custom-control custom-switch custom-control-lg checked">--}}
-                                {{--                                        <input {{ ($current_dor == 1) ? 'checked' : 'name=current_dor' }}--}}
-                                {{--                                               onclick="event.preventDefault(); document.getElementById('edit-q1').submit();"--}}
-                                {{--                                            value="1" type="checkbox" class="custom-control-input"--}}
-                                {{--                                            id="dor1">--}}
-                                {{--                                        <label class="custom-control-label" for="dor1">دور اول</label>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
-                                {{--                                    <div class="g">--}}
-                                {{--                                        <div class="custom-control custom-switch custom-control-lg checked">--}}
-                                {{--                                            <input {{ ($current_dor == 2) ? 'checked' : 'name=current_dor' }}--}}
-                                {{--                                                   onclick="event.preventDefault(); document.getElementById('edit-q1').submit();"--}}
-                                {{--                                                 type="checkbox" value="2"--}}
-                                {{--                                                class="custom-control-input" id="dor2">--}}
-                                {{--                                            <label class="custom-control-label" for="dor2">دور دوم</label>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
                             </form>
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.member.q')
 
 @section('title')
-    پاسخ گویی به سوالات
+    راه اندازی اولیه
 @endsection
 
 @section('content')
@@ -10,15 +10,15 @@
             <!-- .nk-split-content -->
 
 
-            <div class="nk-split-content nk-split-stretch bg-white p-5 d-flex justify-center align-center flex-column">
+            <div class="nk-split-content nk-split-stretch bg-primary-dim p-5 d-flex justify-center align-center flex-column">
                 <div class="wide-xs-fix">
 
-                    <div class="card bg-lighter">
+                    <div class="card bg-white">
                         <div class="card-header">شروع به کار</div>
                         <div class="card-inner">
-                            <h5 class="card-title">تنظیمات اولیه</h5>
-                            <br>
-                            <form class="nk-stepper stepper-init is-alter" action="#" id="stepper-survey-v1" data-step-current="first" novalidate="novalidate" style="display: block;">
+{{--                            <h5 class="card-title">تنظیمات اولیه</h5>--}}
+                            <form class="nk-stepper stepper-init is-alter" method="post" action="{{ route('setup') }}" id="sform" data-step-current="first" novalidate="novalidate" style="display: block;">
+                                @csrf
                                 <div class="nk-stepper-content">
                                     <div class="nk-stepper-progress stepper-progress mb-4">
                                         <div class="stepper-progress-count mb-2">1 از 5</div>
@@ -54,36 +54,28 @@
                                             </div>
                                         </div>
                                         <div class="nk-stepper-step">
-                                            <h5 class="title mb-3">متن خوش آمد گویی قبل از ورود به مسابقه</h5>
+                                            <h5 class="title mb-3">صفحه خوش آمد گویی قبل از ورود به مسابقه</h5>
                                             <div class="row g-3">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="sv1-first-name">نام</label>
+                                                        <label class="form-label" for="welcome_text">متن</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="sv1-first-name" name="sv1-first-name" placeholder="نام" required="">
+                                                            <textarea class="form-control" id="welcome_text" name="welcome_text" placeholder="به مسابقه چشم انتظار خوش آمدید." required=""></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="sv1-last-name">نام خانوادگی</label>
+                                                        <label class="form-label" for="welcome_btn">متن دکمه</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="sv1-last-name" name="sv1-last-name" placeholder="نام خانوادگی" required="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="sv1-email-address">نشانی ایمیل</label>
-                                                        <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="sv1-email-address" name="sv1-email-address" placeholder="نشانی ایمیل" required="">
+                                                            <input type="text" class="form-control" id="welcome_btn" name="welcome_btn" placeholder="ورود به مسابقه" required="">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="nk-stepper-step">
-                                            <h5 class="title mb-3">متن صفحه شروع مسابقه</h5>
+                                            <h5 class="title mb-3">صفحه شروع مسابقه</h5>
                                             <div class="row g-3">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -127,8 +119,12 @@
                                     <ul class="nk-stepper-pagination pt-4 gx-4 gy-2 stepper-pagination">
                                         <li class="step-prev" style="display: none;"><button class="btn btn-dim btn-primary">بازگشت</button></li>
                                         <li class="step-next" style="display: block;"><button class="btn btn-primary">ادامه</button></li>
-                                        <li class="step-submit" style="display: none;"><button class="btn btn-primary">ارسال</button></li>
+                                        <li class="step-submit" onclick="event.preventDefault();
+                                                     document.getElementById('sform').submit();" style="display: none;"><button type="submit" class="btn btn-primary">ثبت</button></li>
+
                                     </ul>
+
+{{--                                   <button class="btn btn-primary">ار333سال</button>--}}
                                 </div>
                             </form>
 

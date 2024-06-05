@@ -92,4 +92,22 @@ class Admin extends Controller
 
     }
 
+    public function config_all() {
+       return view('admin.config.setup');
+    }
+
+    public function config_all_update(Request $request) {
+       AdminConfigs::where('name' , 'group_name')->first()->update(['config' => $request->group_name]);
+       AdminConfigs::where('name' , 'mosabeghe_name')->first()->update(['config' => $request->mosabeghe_name]);
+       AdminConfigs::where('name' , 'welcome_text')->first()->update(['config' => $request->welcome_text]);
+       AdminConfigs::where('name' , 'welcome_btn')->first()->update(['config' => $request->welcome_btn]);
+       AdminConfigs::where('name' , 'off_start_text')->first()->update(['config' => $request->off_start_text]);
+       AdminConfigs::where('name' , 'enable_start_title')->first()->update(['config' => $request->enable_start_title]);
+       AdminConfigs::where('name' , 'enable_start_text')->first()->update(['config' => $request->enable_start_text]);
+       AdminConfigs::where('name' , 'start_btn')->first()->update(['config' => $request->start_btn]);
+       AdminConfigs::where('name' , 'on_off')->first()->update(['config' => $request->on_off]);
+
+        return redirect(route('config.all'));
+    }
+
 }

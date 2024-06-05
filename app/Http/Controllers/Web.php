@@ -14,18 +14,34 @@ use Illuminate\Support\Facades\Hash;
 
 class Web extends Controller
 {
-    public function setup()
+    public function setup(Request $request)
     {
         if (AdminConfigs::count() == 0){
             return view('setup');
-            $data = [
-                ['name' => 'adminRegister', 'config' => 1],
-                ['name' => 'dor', 'config' => '3',],
-                ['name' => 'current_dor', 'config' => '0',],
-                ['name' => 'start', 'config' => '0',]
-            ];
-            AdminConfigs::insert($data);
-            return redirect('/');
+
+        }
+        return view('errors.access');
+    }
+
+    public function setup_post(Request $request)
+    {
+           if (AdminConfigs::count() == 0){
+            $data = $request;
+            AdminConfigs::insert([
+                ['name' => 'group_name', 'config' =>  $request->group_name],
+                ['name' => 'mosabeghe_name', 'config' =>  $request->mosabeghe_name],
+                ['name' => 'welcome_text', 'config' =>  $request->welcome_text],
+                ['name' => 'welcome_btn', 'config' =>  $request->welcome_btn],
+                ['name' => 'off_start_text', 'config' =>  $request->off_start_text],
+                ['name' => 'enable_start_title', 'config' =>  $request->enable_start_title],
+                ['name' => 'enable_start_text', 'config' =>  $request->enable_start_text],
+                ['name' => 'start_btn', 'config' =>  $request->start_btn],
+                ['name' => 'admin_register', 'config' =>  1],
+                ['name' => 'dor', 'config' =>  3],
+                ['name' => 'current_dor', 'config' =>  0],
+                ['name' => 'on_off', 'config' =>  0],
+            ]);
+            return redirect('/admin/register');
         }
 
     }
@@ -106,14 +122,14 @@ class Web extends Controller
         if (Auth::check()) {
             return redirect()->intended(route('admin.dashboard'));
         } else {
-            $register = AdminConfigs::where('name', 'adminRegister')->first();
+            $register = AdminConfigs::where('name', 'admin_register')->first();
             return view('admin.login', ['register' => $register->config]);
         }
     }
 
     public function admin_register()
     {
-        if (AdminConfigs::where('name', 'adminRegister')->first()->config) {
+        if (AdminConfigs::where('name', 'admin_register')->first()->config) {
             return view('admin.register');
         } else {
             return view('admin.registerBlock');
@@ -138,6 +154,10 @@ class Web extends Controller
             'password' => Hash::make($request->password),
             'random' => 0,
             'admin' => 1,
+        ]);
+
+        AdminConfigs::where('name', 'admin_register')->first()->update([
+            'admin_register' => 0,
         ]);
 
         event(new Registered($user));

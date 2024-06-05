@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Web::class , 'welcome2'])->name('welcome');
 Route::get('/welcome',[Web::class , 'welcome3'])->name('welcome3');
 Route::get('/setup', [Web::class , 'setup'])->name('setup');
+Route::post('/setup', [Web::class , 'setup_post']);
 
 Route::get('/start', function (Request $request) {
     if (\Illuminate\Support\Facades\Auth::check()) {

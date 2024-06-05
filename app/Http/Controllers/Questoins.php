@@ -110,7 +110,7 @@ class Questoins extends Controller
 
     public function config()
     {
-        $current_dor = AdminConfigs::where('name', 'current_dor')->first();
+        $current_dor = AdminConfigs::where('name', 'current_dor')->first()->config;
         if ($current_dor == null){
             AdminConfigs::create([
                 'name' => 'current_dor',
@@ -118,8 +118,8 @@ class Questoins extends Controller
             ]);
             return redirect('/admin/questions/config');
         }
-        $dor = AdminConfigs::where('name', 'dor')->first();
-        return view('admin.questions.configs', ['dor' => $dor->config], ['current_dor' => $current_dor->config]);
+        $dor = AdminConfigs::where('name', 'dor')->first()->config;
+        return view('admin.questions.configs', ['dor' => $dor], ['current_dor' => $current_dor]);
     }
 
     public function config_put()

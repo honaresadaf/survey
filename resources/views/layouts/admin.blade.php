@@ -115,23 +115,26 @@
                                 <h6 class="overline-title text-primary-alt">مدیریت</h6>
                             </li>
                             <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link">
+                            <li class="nk-menu-item has-sub">
+                                <a href="#" class="nk-menu-link nk-menu-toggle">
                                     <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
-                                    <span class="nk-menu-text">تنظیمات عمومی</span>
+                                    <span class="nk-menu-text">تنظیمات</span>
                                 </a>
-                                <a href="{{ route('config_question') }}" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
-                                    <span class="nk-menu-text">تنظیمات سوالات</span>
-                                </a>
-                                <a href="{{ route('config.user') }}" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></em></span>
-                                    <span class="nk-menu-text">تنظیمات ادمین</span>
-                                </a>
-                                <a href="{{ route('config.admins') }}" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></em></span>
-                                    <span class="nk-menu-text">لیست کاربران ادمین</span>
-                                </a>
+                                <ul class="nk-menu-sub">
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('config.all') }}" class="nk-menu-link"><span
+                                                class="nk-menu-text">عمومی</span></a>
+                                    </li>
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('config_question') }}" class="nk-menu-link"><span
+                                                class="nk-menu-text">سوالات</span></a>
+                                    </li>
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('config.admins') }}" class="nk-menu-link"><span
+                                                class="nk-menu-text">لیست ادمین ها</span></a>
+                                    </li>
+                                </ul>
+                                <!-- .nk-menu-sub -->
                             </li>
                             <!-- .nk-menu-item -->
                         </ul>
