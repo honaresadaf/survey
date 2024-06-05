@@ -117,7 +117,7 @@ $n = Questions::count()
                                                         </a>
                                                     </li>
                                                     <li class="nk-tb-action-hidden">
-                                                        <a href="/admin/questions/edit/{{$u->id}}"
+                                                        <a href="{{ route('config.user' , ['user' => $u->id]) }}"
                                                            class="btn btn-trigger btn-icon" data-bs-toggle="tooltip"
                                                            data-bs-placement="top" aria-label="ویرایش"
                                                            data-bs-original-title="ویرایش">
@@ -133,7 +133,7 @@ $n = Questions::count()
                                                             <em class="icon ni ni-trash-fill"></em>
                                                         </a>
                                                     </li>
-                                                    <form id="delete-q" action="/admin/questions/d/{{$u->id}}"
+                                                    <form id="delete-q" action="/admin/config/d/{{$u->id}}"
                                                           method="POST" class="d-none">
                                                         @csrf
                                                         @method('delete')

@@ -20,5 +20,6 @@ Route::prefix('/config')->group(function () {
     Route::get('/user' , [Admin::class , 'config_user'])->name('config.user');
     Route::post('/user' , [Admin::class , 'config_user_post']);
     Route::get('/admins' , [Admin::class , 'config_show_admins'])->name('config.admins');
+    Route::delete('/d/{user}' , [Admin::class , 'delete_admin']);
 });
 

@@ -49,9 +49,10 @@ $n = Questions::count()
                                 @for ($i = 1; $i <= ceil($n / $dor); $i++)
                                     <div class="g">
                                         <div class="custom-control custom-switch custom-control-lg checked">
-                                            <input {{ ($current_dor == $i) ? 'checked' : 'name=current_dor' }}
+                                            <input {{ ($current_dor == $i) ? 'checked' : '' }}
+                                                   name=current_dor
                                                    onclick="event.preventDefault(); document.getElementById('edit-q1').submit();"
-                                                   value="{{ $i }}" type="checkbox" class="custom-control-input"
+                                                   value="{{ ($current_dor == $i) ? '0' : "$i" }}" type="checkbox" class="custom-control-input"
                                                    id="dor{{ $i }}">
                                             <label class="custom-control-label" for="dor{{ $i }}">دور {{ $i }}</label>
                                         </div>

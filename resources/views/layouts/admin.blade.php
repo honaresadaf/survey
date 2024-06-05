@@ -231,7 +231,7 @@
                                         <div class="dropdown-inner">
                                             <ul class="link-list">
                                                 <li>
-                                                    <a href="{{ route('config.user') }}"><em class="icon ni ni-user-alt"></em><span>مشاهده تنظیمات ادمین</span></a>
+                                                    <a href="{{ route('config.user' , ['user' => Illuminate\Support\Facades\Auth::user()->id]) }}"><em class="icon ni ni-user-alt"></em><span>مشاهده تنظیمات ادمین</span></a>
                                                 </li>
                                                 {{--                                                <li>--}}
                                                 {{--                                                    <a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>تنظیمات حساب</span></a>--}}

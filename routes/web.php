@@ -9,12 +9,12 @@ Route::get('/welcome',[Web::class , 'welcome3'])->name('welcome3');
 Route::get('/setup', [Web::class , 'setup'])->name('setup');
 Route::post('/setup', [Web::class , 'setup_post']);
 
-Route::get('/start', function (Request $request) {
+Route::get('/enter', function (Request $request) {
     if (\Illuminate\Support\Facades\Auth::check()) {
         return redirect(route('show.questions'));
     }
     return view('member.login');
-})->name('start');
+})->name('enter');
 
 Route::get('/admin/login', [Web::class , 'admin_login'])->name('admin.login');
 Route::post('/admin/login', [Web::class , 'admin_login_pots'])->name('admin.login');

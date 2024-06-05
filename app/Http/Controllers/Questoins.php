@@ -122,15 +122,20 @@ class Questoins extends Controller
         return view('admin.questions.configs', ['dor' => $dor], ['current_dor' => $current_dor]);
     }
 
-    public function config_put()
+    public function config_put(Request $request)
     {
         $dor = AdminConfigs::where('name', 'dor')->first();
-//        dd(request('current_dor'));
-        if(AdminConfigs::where('name', 'current_dor')->update(['config' => request('current_dor')])) {
-            return view('admin.questions.configs',['dor' => $dor->config], ['current_dor' => request('current_dor')]);
+//        dd($request->current_dor);
+        if(request('current_dor') == null) {
+            $current_dor = 0;
         } else {
-            AdminConfigs::updateOrCreate(['c_name' => 'current_dor', 'config' => request('current_dor')]);
-            return view('admin.questions.configs' , ['dor' => $dor->config] , ['current_dor' => request('current_dor')]);
+            $current_dor = request('current_dor');
+        }
+        if(AdminConfigs::where('name', 'current_dor')->update(['config' => $current_dor])) {
+            return view('admin.questions.configs',['dor' => $dor->config], ['current_dor' => $current_dor]);
+        } else {
+            AdminConfigs::updateOrCreate(['c_name' => 'current_dor', 'config' => $current_dor]);
+            return view('admin.questions.configs' , ['dor' => $dor->config] , ['current_dor' => $current_dor]);
         }
     }
 

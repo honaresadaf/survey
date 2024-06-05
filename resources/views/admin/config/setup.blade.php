@@ -240,15 +240,44 @@ function config2($con)
                                         class="form-note">در صورت خاموش بودن امکان ورود به مسابقه غیر فعال خواهد بود.</span>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-9">
                                 <div class="form-group">
-                                    <div class="custom-control custom-switch custom-control-lg checked">
+                                    <div class="custom-control custom-switch custom-control-lg">
+{{--                                        <input @if(config2('on_off')) checked @endif--}}
+{{--                                        onclick="event.preventDefault(); document.getElementById('sform').submit();"--}}
+{{--                                               value="@if(config2('on_off')) 0 @else 1 @endif" type="checkbox"--}}
+{{--                                               class="custom-control-input"--}}
+{{--                                               id="on_off" name="on_off">--}}
                                         <input @if(config2('on_off')) checked @endif
-                                        onclick="event.preventDefault(); document.getElementById('sform').submit();"
-                                               value="@if(config2('on_off')) 0 @else 1 @endif" type="checkbox"
+                                            type="checkbox"
                                                class="custom-control-input"
                                                id="on_off" name="on_off">
                                         <label class="custom-control-label" for="on_off">فعال / غیر فعال</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-label">امکان افزودن ادمین</label>
+                                    <span
+                                        class="form-note">در صورت خاموش بودن امکان ثبت نام ادمین غیر فعال خواهد بود.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <div class="custom-control custom-switch custom-control-lg">
+{{--                                        <input @if(config2('admin_register')) checked @endif--}}
+{{--                                        onclick="event.preventDefault(); document.getElementById('sform').submit();"--}}
+{{--                                               value="@if(config2('admin_register')) 0 @else 1 @endif" type="checkbox"--}}
+{{--                                               class="custom-control-input"--}}
+{{--                                               id="admin_register" name="admin_register">--}}
+{{--                                        <label class="custom-control-label" for="admin_register">فعال / غیر فعال</label>--}}
+                                        <input @if(config2('admin_register')) checked @endif
+                                                type="checkbox"
+                                               class="custom-control-input"
+                                               id="admin_register" name="admin_register">
+                                        <label class="custom-control-label" for="admin_register">فعال / غیر فعال</label>
                                     </div>
                                 </div>
                             </div>

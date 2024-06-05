@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin2;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class Admin extends Controller
 {
@@ -37,29 +38,35 @@ class Admin extends Controller
 
     }
 
-    public function config_user() {
-       $user = Auth::user();
-      return view('admin.config.user' ,compact('user'));
+    public function config_user(Request $request) {
+      return view('admin.config.user' ,[
+          'user' => User::findOrFail($request->user),
+      ] );
     }
 
     public function config_user_post(Request $request) {
        $request->validate([
            'name' => ['required', 'string', 'max:255'],
-           'number' => ['required', 'string', 'lowercase', 'max:255', 'unique:'.User::class],
+           'number' => ['required', 'string', 'lowercase', 'max:255', Rule::unique('Users')->ignore($request->id)],
        ], [
            'number.unique' => ' نام کاربری تکراری است.'
        ]);
-       User::find($request->user()->id)->update([
+       User::find($request->id)->update([
            'name' => $request->name,
            'number' => $request->number,
        ]);
-       return redirect(route('config.user'));
+       return redirect(route('config.user' , ['user' => $request->id]))->with('status' , true);
     }
 
     public function config_show_admins() {
         $users = User::query();
         $users = $users->Paginate(20);
         return view('admin.config.admins', compact('users'));
+    }
+
+    public function delete_admin(User $user) {
+        $user->delete();
+        return redirect(route('config.admins'))->with('status' , true);
     }
 
     public function all_member() {
@@ -97,6 +104,16 @@ class Admin extends Controller
     }
 
     public function config_all_update(Request $request) {
+        if ($request->on_off == null) {
+            $on_off = 0;
+        } else {
+            $on_off = 1;
+        }
+        if ($request->admin_register == null) {
+            $admin_register = 0;
+        } else {
+            $admin_register = 1;
+        }
        AdminConfigs::where('name' , 'group_name')->first()->update(['config' => $request->group_name]);
        AdminConfigs::where('name' , 'mosabeghe_name')->first()->update(['config' => $request->mosabeghe_name]);
        AdminConfigs::where('name' , 'welcome_text')->first()->update(['config' => $request->welcome_text]);
@@ -105,7 +122,8 @@ class Admin extends Controller
        AdminConfigs::where('name' , 'enable_start_title')->first()->update(['config' => $request->enable_start_title]);
        AdminConfigs::where('name' , 'enable_start_text')->first()->update(['config' => $request->enable_start_text]);
        AdminConfigs::where('name' , 'start_btn')->first()->update(['config' => $request->start_btn]);
-       AdminConfigs::where('name' , 'on_off')->first()->update(['config' => $request->on_off]);
+       AdminConfigs::where('name' , 'on_off')->first()->update(['config' => $on_off]);
+       AdminConfigs::where('name' , 'admin_register')->first()->update(['config' => $admin_register]);
 
         return redirect(route('config.all'));
     }

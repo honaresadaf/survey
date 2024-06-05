@@ -48,6 +48,18 @@
                         </p>
                     </div>
                 </div>
+                <div class="card bg-danger-dim">
+                    <div class="card-inner">
+                        <a class="link-danger" style="margin: 5px" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><em
+                                class="icon ni ni-signout"></em><span>خروج از مسابقه</span></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
             @endif
 
             <div class="nk-block-head">

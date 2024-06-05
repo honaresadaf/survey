@@ -48,16 +48,19 @@ class Web extends Controller
 
     public function welcome2()
     {
+        if (Auth::check()){
+            return redirect(route('welcome3'));
+        }
         return view('welcome2');
     }
 
     public function welcome3()
     {
         if (Auth::check()) {
-            $start = AdminConfigs::where('name', 'start')->first();
+            $start = AdminConfigs::where('name', 'on_off')->first();
             return view('welcome3', ['start' => $start->config]);
         } else {
-            return redirect(route('welcome'));
+            return redirect(route('enter'));
         }
 
     }

@@ -69,8 +69,7 @@ $n = Questions::count()
                                         </div>
                                     </div>
                                 </div>
-
-
+                                <input style="display: none" id="id" type="text" value="{{ $user->id }}"  name="id">
                             </div>
                             <div class="row g-3">
                                 <div class="col-lg-7 offset-lg-5">
