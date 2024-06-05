@@ -12,7 +12,7 @@
     <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css">
 </head>
 
-<body class="has-rtl nk-body ui-rounder npc-general pg-survey no-touch nk-nio-theme" dir="rtl">
+<body class="has-rtl nk-body ui-rounder npc-general pg-survey no-touch nk-nio-theme bg-danger-dim" dir="rtl">
 <div class="nk-app-root">
     <!-- main @s -->
     <div class="nk-main">

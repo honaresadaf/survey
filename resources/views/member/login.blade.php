@@ -6,10 +6,10 @@
 
 @section('content')
 
-    <div class="nk-split-content nk-split-stretch bg-primary-dim p-5 d-flex justify-center align-center flex-column">
+    <div class="nk-split-content nk-split-stretch bg-white p-5 d-flex justify-center align-center flex-column">
         <div class="wide-xs-fix">
 
-            <div class="card bg-white">
+            <div class="card bg-lighter">
                 <div class="card-header">ورود</div>
                 <div class="card-inner">
                     <h5 class="card-title">ابتدا برای شرکت در مسابقه وارد شوید.</h5>
@@ -43,7 +43,7 @@
                         <input style="display: none" id="password_confirmation" type="password"
                                name="password_confirmation" value="12345678" required autocomplete="current-password"/>
                         <div class="form-group">
-                            <button class="btn btn-lg btn-dim btn-primary btn-block">ورود</button>
+                            <button class="btn btn-lg btn-dim btn-dark btn-block">ورود</button>
                         </div>
                     </form>
                 </div>

@@ -291,6 +291,9 @@
                     <div class="nk-footer-wrap">
                         <div class="nk-footer-copyright">© تمام حقوق محفوظ است. گروه چشم انتظار.</div>
                         <div class="nk-footer-links">
+                            <span class="text-primary">
+                            {{ \App\Models\AdminConfigs::where('name', 'v')->first()->config }}
+                            </span>
                         </div>
                     </div>
                 </div>
